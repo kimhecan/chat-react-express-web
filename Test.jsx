@@ -18,16 +18,22 @@ const Test = () => {
         setValue(e.target.value);
     }                    
     
-    const handleButton = () => {
+    const handleCal = () => {
         setValue(eval(input.current.value));
     }
+
+    const handleClear = () => {
+        input.current.value = '';
+    }
+    
 
     return (
         <TableContext.Provider value={{tableData, input}}>
           계산기<br/>
           <input ref={input} value={value} onChange={handleChange}/>
           <Table tableData={tableData} /> 
-          <button onClick={handleButton}>계산하기</button>
+          <button onClick={handleCal}>계산하기</button>
+          <button onClick={handleClear}>Reset</button>
         </TableContext.Provider>
     )
 }
