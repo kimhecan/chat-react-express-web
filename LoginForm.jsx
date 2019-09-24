@@ -33,7 +33,6 @@ const LoginForm = () => {
              <Input id='password' type='password' value={password} placeholder="비밀번호" onChange={changePwd} required/><br/>
              <Button type="primary" htmlType="submit">로그인</Button>
            </Form>
-             
         </>
     )
 }

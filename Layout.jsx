@@ -13,11 +13,7 @@ const Layout = () => {
         <>
            <Row>
               <Col span={8}>
-                 {isLoggedIn ?
-                    <Profile/>
-                     :
-                    <LoginForm/>
-                }
+                 { isLoggedIn ? <Profile/> : <LoginForm/> }
               </Col>
               <Col span={16}>
               </Col>
