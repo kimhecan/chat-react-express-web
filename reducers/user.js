@@ -21,8 +21,6 @@ export const loginAction = (data) => {
         type: LOG_IN,
         data: data,
     }
-    
-    
 }
 
 export const logoutAction = {
