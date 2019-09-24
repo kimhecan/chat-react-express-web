@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import {Input, Form, Button } from 'antd';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import {Input, Form, Button, Col, Row } from 'antd';
 import { useDispatch } from 'react-redux';
 import { loginAction } from './reducers/user';
+import SignupForm  from './SignupForm';
 
 export const useInput = (initValue = null) => { //custom hook입니다.
     const [input, setter] = useState(initValue); //useState로 input의 초기값과 setter를받습니다. 
@@ -25,15 +27,23 @@ const LoginForm = () => {
     }
 
     return (
-        <>
-          <Form className="Form" onSubmit={handleButton}>
-            <label htmlFor='id'>아이디</label><br/>
-            <Input id='id' type='text' value={id} placeholder="아이디" onChange={changeId} required/><br/>
-            <label htmlFor='password'>비밀번호</label><br/>
-             <Input id='password' type='password' value={password} placeholder="비밀번호" onChange={changePwd} required/><br/>
-             <Button type="primary" htmlType="submit">로그인</Button>
-           </Form>
-        </>
+        <BrowserRouter>
+            <Row>
+              <Col span={8}>
+                <Form className="Form" onSubmit={handleButton}>
+                    <label htmlFor='id'>아이디</label><br/>
+                    <Input id='id' type='text' value={id} placeholder="아이디" onChange={changeId} required/><br/>
+                    <label htmlFor='password'>비밀번호</label><br/>
+                    <Input id='password' type='password' value={password} placeholder="비밀번호" onChange={changePwd} required/><br/>
+                    <Button type="primary" htmlType="submit" style={{ marginRight:'10px', marginTop: '5px'}}>로그인</Button>
+                    <Link to="/SignupForm"><Button type="primary" style={{ marginTop: '5px'}}>회원가입하기</Button></Link>
+                </Form>
+              </Col>
+              <Col span={16}>
+                  <Route path="/SignupForm" component={SignupForm} />
+              </Col>
+           </Row>
+        </BrowserRouter>
     )
 }
 
