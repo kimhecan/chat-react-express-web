@@ -1,18 +1,17 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
-import Profile from './Profile';
 import { useSelector } from 'react-redux';
+import Profile from './Profile';
 import LoginForm from './LoginForm';
 
-
 const Layout = () => {
+  const { isLoggedIn } = useSelector((state) => state.user);
 
-    const { isLoggedIn } = useSelector(state => state.user);
-
-    return (
-        <>
-           { isLoggedIn ? <Profile/> : <LoginForm/> }
-        </>
-    )
-}
+  return (
+    <>
+      { isLoggedIn ? <Profile /> : <LoginForm /> }
+    </>
+  );
+};
 
 export default Layout;
