@@ -60,8 +60,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        userId: action.result.userId,
-        userName: action.result.userName,
+        userId: action.data.userId,
+        userName: action.data.userName,
       };
     }
     case LOG_IN_FAILURE: {
@@ -95,7 +95,8 @@ const reducer = (state = initialState, action) => {
     case LOAD_USER_SUCCESS: {
       return {
         ...state,
-        userId: action.data.userId
+        userId: action.data.userId,
+        userName: action.data.userName
       };
     }
     case LOAD_USER_FAILURE: {

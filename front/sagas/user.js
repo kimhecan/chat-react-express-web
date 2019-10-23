@@ -53,13 +53,12 @@ function* watchLogin() {
 function* login(action) {
     try {
         const result = yield call(loginAPI, action.data);
-        console.log(result.data);
-        
         yield put({
             type: LOG_IN_SUCCESS,
-            result: result.data
+            data: result.data
         });
     } catch (e) {
+        alert('잘못된 입력입니다.')
         console.error(e);
         yield put({
             type: LOG_IN_FAILURE,
@@ -112,6 +111,7 @@ function* watchLoadUser() {
 function* loadUser() {
     try {
       const result = yield call(loadUserAPI);
+      console.log(result);
       yield put({ // put은 dispatch 동일
         type: LOAD_USER_SUCCESS,
         data: result.data,
