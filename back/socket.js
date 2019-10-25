@@ -10,6 +10,12 @@ module.exports = (server) => {
     io.on('connection', (socket) => {
         console.log('connection');
         socket.on('join', (userName) => {
+            for(let i; i <= usersService.getAllUsers.length; i++) {
+                if(userName === usersService.getAllUsers.name) {
+                    alert('이미 접속하셨습니다.');
+                    
+                }
+            }
             console.log('join');
             usersService.addUser({
                 id:socket.id,
@@ -23,7 +29,7 @@ module.exports = (server) => {
         socket.on('message', (message) => {
             const { name } = usersService.getUserById(socket.id);
             socket.broadcast.emit('message', {
-                text: message.text,
+                text: message.text+'+',
                 from: name
             });
         });

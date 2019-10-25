@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import  Rooms from '../component/Rooms';
+// import  Rooms from '../component/Rooms';
 import ChatRoom from '../component/ChatRoom';
 import { LOG_OUT_REQUEST } from '../reducers/user';
 
@@ -40,7 +40,7 @@ const MainPage = () => {
              로그아웃
         </Menu.Item>
       </Menu>
-      <Route path="/look" component={Rooms}/>
+      <Route path="/look" component={ChatRoom}/>
       <Route path="/ChatRoom" component={ChatRoom}/>
     </BrowserRouter>
   );

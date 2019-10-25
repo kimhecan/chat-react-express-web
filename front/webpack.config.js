@@ -5,11 +5,12 @@ module.exports = {
     mode: 'development',
     devtool: 'eval', // hidden-source-map
     resolve: {
+        modules: ['node_modules'],
         extensions: ['.jsx', '.js']
     },
 
     entry: {
-        app: './client',
+        app: './pages',
     },
     module: {
         rules:[{

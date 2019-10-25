@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MainPage from './MainPage';
-import Index from './Index';
+import LoginPage from './LoginPage';
 import { LOAD_USER_REQUEST } from '../reducers/user';
 
 const Layout = () => {
@@ -20,7 +20,7 @@ const Layout = () => {
 
   return (
     <>
-      { userId ? <MainPage /> : <Index /> }
+      { userId ? <MainPage /> : <LoginPage /> }
     </>
   );
 };

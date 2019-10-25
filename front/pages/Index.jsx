@@ -1,22 +1,24 @@
-/* eslint-disable linebreak-style */
-import React, { useState } from 'react';
-import { Col, Row } from 'antd';
-import LoginForm from '../component/LoginForm';
+import  React from 'react';
+import ReactDOM from 'react-dom';
+import { hot } from 'react-hot-loader/root';
+
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose  } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga'
+
+import Layout from './Layout';
+import rootReducer from '../reducers';
+import rootSaga from '../sagas';
 
 
 
-const Index = () => {
-  const imgUrl = "https://user-images.githubusercontent.com/39295881/65757342-e8739400-e151-11e9-9c19-32be25e45b81.png"
-  return (
-      <Row>
-        <Col span={16}>
-          <img src={imgUrl} alt="logo" />
-        </Col>
-        <Col span={8}>
-          <LoginForm />
-        </Col>
-      </Row>
-  );
-};
+const sagaMiddleware = createSagaMiddleware()
 
-export default Index;
+const store = createStore(rootReducer,compose(applyMiddleware(sagaMiddleware), composeWithDevTools()));
+
+sagaMiddleware.run(rootSaga)
+
+const Hot = hot(Layout);
+
+ReactDOM.render(<Provider store={store}><Hot/></Provider>  , document.querySelector('#root'));
