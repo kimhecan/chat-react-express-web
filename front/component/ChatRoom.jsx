@@ -132,7 +132,7 @@ const MessageForm = (props) => {
   return (
       <>
         <form className='MessageForm' onSubmit={handleSubmit}>
-            <input
+            <Input
               className='MessageInput'
               onChange={changeHandler}
               value={text}
