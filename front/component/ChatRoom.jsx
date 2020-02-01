@@ -45,7 +45,7 @@ const ChatRoom = () => {
               </Col>
               <Col span={16}>
                   {messages.length !== 0 ?
-                      <div> 
+                      <div style={{border: '1px solid black', with: '300px', height: '600px'}}> 
                           <MessageList messages={messages} />
                           <MessageForm onMessageSubmit={message => handleMessageSubmit(message)} name={userName}/>
                       </div>
@@ -87,7 +87,6 @@ const UserForm = () => {
 };
 
 const UserList = ({users}) => {
-  console.log(users);
   return (
       <>
         <div>
@@ -131,7 +130,7 @@ const MessageForm = (props) => {
 
   return (
       <>
-        <form className='MessageForm' onSubmit={handleSubmit}>
+        <form className='MessageForm' onSubmit={handleSubmit} style={{ marginBottom: '0px'}}> 
             <Input
               className='MessageInput'
               onChange={changeHandler}
@@ -147,16 +146,12 @@ const MessageForm = (props) => {
 
 
 const MessageList = ({messages}) => {
-
-  console.log('messageList');
   
-
   return (
         <List
           itemLayout="horizontal"
           dataSource={messages}
           renderItem={item => {
-            console.log(item.text);
             if(item.text[item.text.length-1] === "+") {
               return (
                 <List.Item>
